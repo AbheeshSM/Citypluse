@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 206 23% 97%;
+    --foreground: 214 17% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 214 17% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 17% 20%;
+
+    --primary: 182 100% 40%;
+    --primary-foreground: 222 36% 8%;
+
+    --secondary: 206 72% 82%;
+    --secondary-foreground: 214 22% 25%;
+
+    --muted: 205 24% 92%;
+    --muted-foreground: 215 18% 40%;
+
+    --accent: 256 84% 58%;
+    --accent-foreground: 222 36% 8%;
+
+    --destructive: 354 77% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 154 62% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 42 100% 58%;
+    --warning-foreground: 214 18% 18%;
+
+    --info: 195 95% 55%;
+    --info-foreground: 214 18% 18%;
+
+    --border: 212 24% 86%;
+    --input: 212 24% 86%;
+    --ring: 185 95% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 215 38% 94%;
+    --sidebar-foreground: 214 17% 20%;
+    --sidebar-primary: 182 100% 40%;
+    --sidebar-primary-foreground: 222 36% 8%;
+    --sidebar-accent: 182 50% 70%;
+    --sidebar-accent-foreground: 222 36% 8%;
+    --sidebar-border: 216 24% 82%;
+    --sidebar-ring: 185 95% 45%;
+
+    --glass: 0 0% 100%;
+    --glass-border: 214 24% 85%;
+
+    --chart-grid: 212 26% 84%;
+    --chart-text: 215 18% 43%;
+    --chart-tooltip-bg: 0 0% 100%;
+    --chart-tooltip-border: 212 24% 86%;
+  }
+
+  .dark {
+    --background: 212 20% 10%;
+    --foreground: 210 18% 94%;
+
+    --card: 212 20% 18%;
+    --card-foreground: 210 18% 94%;
+
+    --popover: 214 20% 16%;
+    --popover-foreground: 210 18% 94%;
+
+    --primary: 187 90% 53%;
+    --primary-foreground: 210 18% 14%;
+
+    --secondary: 215 72% 68%;
+    --secondary-foreground: 210 18% 94%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 210 18% 94%;
+
+    --accent: 256 86% 57%;
+    --accent-foreground: 210 18% 14%;
+
+    --destructive: 354 77% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 154 63% 44%;
+    --success-foreground: 210 18% 14%;
+
+    --warning: 42 100% 60%;
+    --warning-foreground: 210 18% 14%;
+
+    --info: 195 95% 58%;
+    --info-foreground: 210 18% 14%;
+
+    --border: 213 20% 24%;
+    --input: 213 20% 24%;
+    --ring: 185 95% 45%;
+
+    --sidebar-background: 214 20% 14%;
+    --sidebar-foreground: 210 18% 94%;
+    --sidebar-primary: 187 90% 53%;
+    --sidebar-primary-foreground: 210 18% 14%;
+    --sidebar-accent: 218 85% 45%;
+    --sidebar-accent-foreground: 210 18% 94%;
+    --sidebar-border: 214 20% 22%;
+    --sidebar-ring: 185 95% 45%;
+
+    --glass: 218 20% 18%;
+    --glass-border: 214 20% 24%;
+
+    --chart-grid: 214 20% 24%;
+    --chart-text: 210 18% 94%;
+    --chart-tooltip-bg: 214 20% 16%;
+    --chart-tooltip-border: 214 20% 24%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.12), transparent 28rem),
+      radial-gradient(circle at bottom right, hsl(var(--accent) / 0.14), transparent 26rem);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/90 backdrop-blur-xl border border-glass-border rounded-xl shadow-sm;
+    box-shadow: 0 18px 45px -32px hsl(var(--foreground) / 0.35);
+  }
+
+  .dark .glass-card {
+    background-color: hsl(var(--glass) / 0.72);
+    box-shadow: 0 18px 55px -34px hsl(0 0% 0% / 0.8);
+  }
+
+  .gradient-primary {
+    @apply bg-primary;
+  }
+
+  .gradient-text {
+    @apply text-primary;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 34px -12px hsl(var(--primary) / 0.65);
+  }
+
+  .status-resolved {
+    @apply bg-success/20 text-success border-success/30;
+  }
+
+  .status-pending {
+    @apply bg-warning/20 text-warning border-warning/30;
+  }
+
+  .status-urgent {
+    @apply bg-destructive/20 text-destructive border-destructive/30;
+  }
+
+  .status-active {
+    @apply bg-info/20 text-info border-info/30;
+  }
+
+  .kpi-card {
+    @apply glass-card p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/50;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-sidebar-foreground/70 transition-all duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
+  }
+
+  .nav-item-active {
+    @apply bg-sidebar-primary/15 text-sidebar-primary border-l-2 border-sidebar-primary;
+  }
+
+  .input-glass {
+    @apply bg-card border border-border px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:brightness-110 hover:scale-[1.02] glow-primary;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent border border-border text-foreground px-6 py-3 rounded-lg transition-all duration-200 hover:bg-muted hover:border-primary/50;
+  }
+
+  .table-row {
+    @apply border-b border-border transition-colors hover:bg-muted/50;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
